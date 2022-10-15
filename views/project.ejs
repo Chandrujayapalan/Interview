@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div>
+      <form class="text-center">
+        <div class="mt-5 mb-5">Trip From <%= getBooking.flight.from %> to <%= getBooking.flight.to %>- Date</div>
+       
+        <div class="row mb-3">
+              <label class="col-4">From : </label>   <label class="col-4"><%= getBooking.flight.from %></label><br></br>
+          <label class="col-4">To :</label>     <label class="col-4"><%= getBooking.flight.to %></label><br></br>
+          
+          <label class="col-4">Discounts Code Used :</label><% if(offer) { %>
+           <label class="col-4"><%=offer %></label>
+             <% }else{ %>        
+                <label>NIl</label>
+            <%} %>
+          </div>
+            <div class="row ">
+            <label class="col-4">Departure :</label> <label class="col-4"><%= getBooking.flight.deportDate %></label><br></br>
+            <label class="col-4">Arival : </label> <label class="col-4"><%= getBooking.flight.arrivalDate %></label><br></br>
+              <label class="col-4">Total Amount : </label><label class="col-4"><%= getBooking.total %></label><br></br>
+        </div>
+        <div class="row">
+          <label class="col-4">Passenger Name :</label> <label class="col-4"><%= getBooking.userId.name %></label><br></br>
+          <label class="col-4">Booking Status :</label> <label class="col-4">Booking Confirmed</label><br></br>
+          <% if(offer) { %>
+          <% if(getBooking.offer.offerCode === "FoodFree") { %>
+            <label class="col-4">
+             DISCOUNT APPLIED : FREEFOOD IN FLIGHT
+            </label>
+            <% }else{ %>
+              <label class="col-4">Discount Amount : </label> <label class="col-4">
+                <%= getBooking.amount - getBooking.total%>
+              </label>
+              <%} %>
+            <% }else{ %>
+              <label class="col-4">Discount Amount : </label> <label class="col-4">
+                <%= getBooking.amount - getBooking.total%>
+              </label>
+              <%} %>
+
+
+         <br></br>
+
+        </div>
+        <div class="row">
+           
+         
+          </div>
+      </form>
+    </div>
+  </body>
+</html>
